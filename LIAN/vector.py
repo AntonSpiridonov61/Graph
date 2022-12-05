@@ -15,5 +15,5 @@ class Vector():
 def angle(a1, a2, b1, b2):
     a = Vector(a1, a2)
     b = Vector(b1, b2)
-    cos = round(abs((a.x * b.x + a.y * b.y) / (a.length * b.length)), 8)
+    cos = round((a.x * b.x + a.y * b.y) / (a.length * b.length), 8)
     return acos(cos) * (180 / pi)

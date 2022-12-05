@@ -27,13 +27,12 @@ class LIAN():
             if a == self.end:
                 self.getPath(a)
                 return True
-            if a not in self.closed:
-                self.closed.append(a)
-                self.expand(a)
-            #     self.map[a.x][a.y] = 2
-            # if len(self.closed) % 2000 == 0:
-            #     plt.imshow(self.map)
-            #     plt.show()
+            self.closed.append(a)
+            self.expand(a)
+            self.map[a.x][a.y] = 10
+            if len(self.closed) % 1 == 0:
+                plt.imshow(self.map)
+                plt.show()
         print(self.closed)
         return False
  
@@ -59,16 +58,16 @@ class LIAN():
                     break
             if isImpassable:
                 continue
+
             for close in self.closed:
                 if item.linkPoint is not None and item == close and item.linkPoint == close.linkPoint:
                     isVisit = True
                     break
             if isVisit:
                 continue
-
-            item.weight = point.weight + dist(item, self.end)
+            item.weight = dist(item, self.end)
             self.open.put((item.weight, item))
-            # self.map[item.x][item.y] = 0.4
+            self.map[item.x][item.y] = 5
 
     def getPath(self, point):
         if point.linkPoint is not None:
