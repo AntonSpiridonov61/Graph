@@ -21,6 +21,7 @@ class LIAN():
         self.path = []
 
     def run(self):
+        print("run")
         while not self.open.empty():
             a = self.open.get()[1]
             if a == self.end:
@@ -29,11 +30,11 @@ class LIAN():
             if a not in self.closed:
                 self.closed.append(a)
                 self.expand(a)
-                # self.map[a.x][a.y] = 0.8
-            # if len(self.closed) % 100 == 0:
+            #     self.map[a.x][a.y] = 2
+            # if len(self.closed) % 2000 == 0:
             #     plt.imshow(self.map)
             #     plt.show()
-
+        print(self.closed)
         return False
  
     def expand(self, point):
@@ -52,8 +53,7 @@ class LIAN():
             if point != self.start and angle(point.linkPoint, point, point, item) > self.angle:
                 continue
 
-
-            for p in getLinePoint(point.linkPoint, point):
+            for p in getLinePoint(point, item):
                 if self.matrix[p.x][p.y] == 1:
                     isImpassable = True
                     break
