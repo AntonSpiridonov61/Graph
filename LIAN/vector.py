@@ -12,6 +12,7 @@ class Vector():
     def length(self):
         return sqrt(self.x ** 2 + self.y ** 2)
 
+# вычисление угла между двумя прямыми
 def angle(a1, a2, b1, b2):
     a = Vector(a1, a2)
     b = Vector(b1, b2)

@@ -1,6 +1,6 @@
 from point import Point
 
-
+# MidPoint
 def getCirclePoint(point, delta, width, height):
     def addPoint(x, y):
         if x >= 0 and y >= 0 and x < width and y < height:
@@ -43,7 +43,7 @@ def getCirclePoint(point, delta, width, height):
 
     return result
 
-
+# функция для вычисления нуль-траектории между точками
 def getLinePoint(a, b):
     points = []
 

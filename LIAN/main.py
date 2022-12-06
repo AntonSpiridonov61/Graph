@@ -37,16 +37,18 @@ def maps():
     img = cv2.imread("LIAN/karta-01.bmp", 0)
     ret, thresh = cv2.threshold(img, 1, 255, cv2.THRESH_BINARY_INV)
     matrix = list(thresh//255)
+    plt.imshow(img)
+    plt.show()
     image = np.copy(matrix)
-    start = Point(0, 0, Point(0, 0))
-    end = Point(thresh.shape[0]-1, thresh.shape[1]-1)
-    delta = 50
+    start = Point(305, 165, Point(305, 165))
+    end = Point(690, 1290)
+    delta = 30
     angle = 30.0
 
     return matrix, image, start, end, delta, angle
 
 
-matrix, image, start, end, delta, angle = test2()
+matrix, image, start, end, delta, angle = maps()
 
 lian = LIAN(matrix, start, end, delta, angle)
 if lian.run():
@@ -54,7 +56,7 @@ if lian.run():
         points = getLinePoint(lian.path[i], lian.path[i+1])
         for point in points:
             # image[point.x, point.y] = 0.5
-            for m in range(0, 1):
+            for m in range(0, 3):
                 if point.x+m < image.shape[0]:
                     image[point.x+m][point.y] = 10
                 if point.x-m >= 0:

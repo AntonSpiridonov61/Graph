@@ -4,18 +4,14 @@ class Point():
     def __init__(self, x, y, linkPoint = None):
         self.x = x
         self.y = y
-        self.weight = 0
-        self.linkPoint = linkPoint # ссылка на предыдущюю точку
+        self.linkPoint = linkPoint
 
-    # перегрузка оператора сравнения ==
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
-    # перегрузка оператора отрицания !=
     def __ne__(self, other):
         return self.x != other.x or self.y != other.y
 
-    # перегрузка оператора меньше <
     def __lt__(self, other):
         self_mag = (self.x ** 2) + (self.y ** 2)
         other_mag = (other.x ** 2) + (other.y ** 2)
