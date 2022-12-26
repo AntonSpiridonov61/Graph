@@ -33,6 +33,20 @@ def test2():
 
     return matrix, image, start, end, delta, angle
 
+
+def test3():
+    matrix = np.zeros((1000, 1000))
+    matrix[300:700, 300:700] = 1
+
+    image = np.copy(matrix)
+    start = Point(0, 0, Point(0, 0))
+    end = Point(999, 999)
+    delta = 75
+    
+    angle = 30.0
+
+    return matrix, image, start, end, delta, angle
+
 def maps():
     img = cv2.imread("LIAN/karta-01.bmp", 0)
     ret, thresh = cv2.threshold(img, 1, 255, cv2.THRESH_BINARY_INV)
@@ -48,7 +62,7 @@ def maps():
     return matrix, image, start, end, delta, angle
 
 
-matrix, image, start, end, delta, angle = maps()
+matrix, image, start, end, delta, angle = test3()
 
 lian = LIAN(matrix, start, end, delta, angle)
 if lian.run():
